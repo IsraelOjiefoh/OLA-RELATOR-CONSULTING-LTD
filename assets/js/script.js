@@ -1,51 +1,44 @@
-'use strict';
+"use strict";
 
 /**
- * element toggle function
+ * Element toggle function
  */
-
-const elemToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
+const elemToggleFunc = (elem) => elem.classList.toggle("active");
 
 /**
- * navbar toggle
+ * Navbar toggle
  */
-
 const navbar = document.querySelector("[data-navbar]");
 const overlay = document.querySelector("[data-overlay]");
 const navCloseBtn = document.querySelector("[data-nav-close-btn]");
 const navOpenBtn = document.querySelector("[data-nav-open-btn]");
 const navbarLinks = document.querySelectorAll("[data-nav-link]");
 
-const navElemArr = [overlay, navCloseBtn, navOpenBtn];
+// Combine all elements that can toggle the navbar
+const navToggleElems = [overlay, navCloseBtn, navOpenBtn, ...navbarLinks];
 
-/**
- * close navbar when click on any navbar link
- */
+navToggleElems.forEach((elem) => {
+  if (!elem) return; // skip if element doesn't exist
+  elem.addEventListener("click", () => {
+    if (navbar) elemToggleFunc(navbar);
+    if (overlay) elemToggleFunc(overlay);
 
-for (let i = 0; i < navbarLinks.length; i++) { navElemArr.push(navbarLinks[i]); }
-
-/**
- * addd event on all elements for toggling navbar
- */
-
-for (let i = 0; i < navElemArr.length; i++) {
-  navElemArr[i].addEventListener("click", function () {
-    elemToggleFunc(navbar);
-    elemToggleFunc(overlay);
+    // Optional: toggle open/close button visibility
+    if (navOpenBtn && navCloseBtn) {
+      const isActive = navbar.classList.contains("active");
+      navOpenBtn.style.display = isActive ? "none" : "block";
+      navCloseBtn.style.display = isActive ? "block" : "none";
+    }
   });
-}
-
-
+});
 
 /**
- * header active state
+ * Header active state on scroll
  */
-
 const header = document.querySelector("[data-header]");
-
-window.addEventListener("scroll", function () {
-  window.scrollY >= 400 ? header.classList.add("active")
+window.addEventListener("scroll", () => {
+  if (!header) return;
+  window.scrollY >= 400
+    ? header.classList.add("active")
     : header.classList.remove("active");
-}); 
+});

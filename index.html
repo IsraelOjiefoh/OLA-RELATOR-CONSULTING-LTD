@@ -29,6 +29,30 @@
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <script>
+      window.codySettings = {
+        widget_id: "9f0faa1f-0116-48f7-b100-22c5b476054f",
+      };
+
+      !(function () {
+        var t = window,
+          e = document,
+          a = function () {
+            var t = e.createElement("script");
+            (t.type = "text/javascript"),
+              (t.async = !0),
+              (t.src = "https://trinketsofcody.com/cody-widget.js");
+            var a = e.getElementsByTagName("script")[0];
+            a.parentNode.insertBefore(t, a);
+          };
+        "complete" === document.readyState
+          ? a()
+          : t.attachEvent
+          ? t.attachEvent("onload", a)
+          : t.addEventListener("load", a, !1);
+      })();
+    </script>
   </head>
 
   <body>
@@ -89,6 +113,13 @@
               </ul>
             </div>
           </nav>
+          <button
+            class="header-actions-btn"
+            data-nav-open-btn
+            aria-label="Open Menu"
+          >
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
         </div>
       </div>
     </header>
