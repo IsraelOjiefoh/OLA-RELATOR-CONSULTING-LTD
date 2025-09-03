@@ -321,7 +321,7 @@ a {
 }
 
 .header-top .container .logo img {
-  width: 50px;
+  width: 60px;
 }
 
 .header-top-link {
@@ -599,6 +599,11 @@ a {
 }
 
 .service .section-title {
+  color: var(--white);
+}
+
+
+.features .section-title {
   color: var(--white);
 }
 
@@ -1041,9 +1046,8 @@ a {
 \*-----------------------------------*/
 
 .cta {
-  background: linear-gradient(to bottom,
-      var(--white) 50%,
-      var(--raisin-black-1) 50%);
+
+  margin: 50px 0px;
 }
 
 .cta-card {
